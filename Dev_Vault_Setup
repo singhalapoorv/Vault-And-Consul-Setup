@@ -1,0 +1,21 @@
+Vault Setup for Rainier:
+
+1. Install Vault for Windows-64 bit
+2. Add its path in the Environment variables "path" field.
+3. Now you should be able to type vault in cmd and see the command running and list some methods.
+
+To setup dev-server using CMD
+
+1.Type vault server -dev
+2. Note down the command "set VAULT_ADDR=http://127.0.0.1:8200" and open another cmd and type it into that to setup default vault server address.
+3. Copy the Unseal Key and Root Token.
+4. Now in another cmd type vault status to see if vault server is up and check the "Sealed" value. It should be false.
+5. Use can try different commands to store key,value pairs and return its hash value using the "vault kv crud operations".
+6. To enable okta for authorization, type "vault auth enable okta"
+7. Now use the below command to set the website name, your company server address on okta and the API-Token which you can create on Okta.
+	vault write auth/okta/config base_url="okta.com" org_name="dev-******" api_token="********************"
+8. Try to login to okta now,
+	vault login -method=okta username=username@site.com password=******
+9. Now check the Rainier web.config to point "Vault" = to your local Vault server.
+10. It's done!!
+

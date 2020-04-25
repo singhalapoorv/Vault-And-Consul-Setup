@@ -1,0 +1,16 @@
+
+cd C:\Program Files\vault
+
+vault.exe server -config=config.hcl -address="127.0.0.1:8200"
+
+set VAULT_ADDR=http://localhost:8200
+
+vault.exe status 
+
+vault.exe operator unseal *unseal key*
+
+vault.exe operator unseal *unseal key*
+
+vault.exe operator unseal *unseal key*
+
+

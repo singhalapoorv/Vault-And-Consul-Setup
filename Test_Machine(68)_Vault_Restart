@@ -13,4 +13,4 @@ vault.exe operator unseal *unseal key*
 
 vault.exe operator unseal *unseal key*
 
-
+You can view the consul ui on -> localhost:8200/ui/

@@ -1,0 +1,21 @@
+Consul Setup:
+
+Create config.json file in consul folder in vault directory.
+Sample file:
+{
+  "datacenter": "dc1",
+  "data_dir": "C:\\Users\\vault\\data",
+  "log_level": "INFO",
+  "node_name": "node1",
+  "server": true,
+  "bind_addr": "127.0.0.1",
+  "bootstrap": true,
+  "ui": true,
+  "log_file" : "C:\\Users\\vault\\consul\\consul.log" 
+}
+
+Now run cmd and execute the below commad to run a windows service with consul agent.
+
+sc create "Consul" binPath= "C:\Users\vault\consul\consul.exe agent -config-dir=C:\Users\vault\consul\config.json" start= auto
+
+You can view the consul ui on -> localhost:8600/ui/

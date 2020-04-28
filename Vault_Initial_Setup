@@ -1,0 +1,47 @@
+
+Vault Prod Setup(1st time):
+
+Make sure you setup Consul first and it's service is running.
+
+Create config.hcl file in vault directory.
+Sample file:
+			storage "consul" {
+			  address = "127.0.0.1:8500"
+			  path    = "C:\\Users\\vault\\consul"
+			}
+
+			listener "tcp" {
+				address =  "127.0.0.1:8200"
+				tls_disable = 1
+			}
+
+			ui=true
+
+Now run the following commands:
+
+cd C:\Program Files\vault
+
+vault.exe server -config=config.hcl -address="127.0.0.1:8200"
+
+set VAULT_ADDR=http://localhost:8200
+
+vault.exe status 
+
+vault.exe operator init 
+
+vault.exe operator unseal *unseal key*
+
+vault.exe operator unseal *unseal key*
+
+vault.exe operator unseal *unseal key* 
+
+vault.exe login *root_token*
+
+vault.exe audit enable -path="vault_audit" file file_path="/Program Files/vault/vault_audit.log"
+
+vault.exe auth enable okta
+
+vault.exe write auth/okta/config base_url="okta.com" org_name="dev-******" api_token="******************"
+
+optional:
+vault.exe login -method=okta username=username@company.com password=*******

@@ -1,0 +1,12 @@
+Setup OKTA Authorization on Vault using below commands:
+
+cd C:\Users\vault
+
+vault.exe login *root_token*
+
+vault.exe auth enable okta
+
+vault.exe write auth/okta/config base_url="okta.com" org_name="your-okta-server" api_token="*****************************"
+
+optional:
+vault.exe login -method=okta username=username@company.com password=*******

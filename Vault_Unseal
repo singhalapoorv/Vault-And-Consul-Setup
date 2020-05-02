@@ -1,0 +1,11 @@
+
+cd C:\Users\vault
+
+set VAULT_ADDR=http://machine_name:8200
+
+vault.exe operator unseal *unseal key*
+
+vault.exe operator unseal *unseal key*
+
+vault.exe operator unseal *unseal key*
+

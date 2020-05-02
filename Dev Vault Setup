@@ -16,5 +16,6 @@ To setup dev-server using CMD
 	vault write auth/okta/config base_url="okta.com" org_name="dev-957272" api_token="********************"
 8. Try to login to okta now,
 	vault login -method=okta username=username@site.com password=******
-It's done!!
+9. Now check the Rainier web.config to point "Vault" = to your local Vault server.
+10. It's done!!
 

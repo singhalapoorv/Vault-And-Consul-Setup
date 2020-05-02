@@ -1,0 +1,10 @@
+Vault can be restarted from command line but that way it is prone to get closed accidently.
+In order to run Vault in the background we create a NSSM service for it.
+
+Download nssm 64 bit version.
+Add it's path to the "path" Environment Variable.
+Install a new Vault service in this format: nssm install Service_Name Full path to Service.exe server -config=Full path to config.hcl
+
+nssm install Vault C:\Users\vault\vault.exe server -config=C:\Users\vault\config.hcl -address="machine_name:8200"
+
+Now start this service: nssm start Vault

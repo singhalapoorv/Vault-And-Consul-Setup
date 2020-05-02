@@ -1,16 +1,17 @@
-
-cd C:\Program Files\vault
-
+Start Vault Server:
+1. Run the following commands:
+cd C:\Users\vault
 vault.exe server -config=config.hcl -address="127.0.0.1:8200"
 
-set VAULT_ADDR=http://localhost:8200
+		OR
 
-vault.exe status 
+2. Just start the Windows service "Vault" created in the document Vault_Service_Restart.
 
-vault.exe operator unseal *unseal key*
+Unseal Vault:
+1. Refer to the Vault_Unseal file
 
-vault.exe operator unseal *unseal key*
-
-vault.exe operator unseal *unseal key*
+		OR
+		
+2.Run the batch file created in Initial Setup.
 
 You can view the consul ui on -> localhost:8200/ui/

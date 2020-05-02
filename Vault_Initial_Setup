@@ -4,6 +4,7 @@ Vault Prod Setup(1st time):
 Make sure you setup Consul first and it's service is running.
 
 Create config.hcl file in vault directory.
+Set the listener address to machine_name:8200 if you want to access vault from other servers too.
 Sample file:
 			storage "consul" {
 			  address = "127.0.0.1:8500"
@@ -11,7 +12,7 @@ Sample file:
 			}
 
 			listener "tcp" {
-				address =  "127.0.0.1:8200"
+				address =  "machine_name:8200"
 				tls_disable = 1
 			}
 
@@ -19,29 +20,21 @@ Sample file:
 
 Now run the following commands:
 
-cd C:\Program Files\vault
+cd C:\Users\vault
 
-vault.exe server -config=config.hcl -address="127.0.0.1:8200"
+vault.exe server -config=config.hcl -address="machine_name:8200"
 
-set VAULT_ADDR=http://localhost:8200
+set VAULT_ADDR=http://machine_name:8200
 
 vault.exe status 
 
 vault.exe operator init 
 
-vault.exe operator unseal *unseal key*
+Unseal vault from the Vault_Unseal file.
+It will be handy to create a batch file providing the unseal keys in the Vault_Unseal file and saving it with .bat extension.
+Vault can be unsealed using this batch file from now on( PS:This way anyone can unseal it).  
 
-vault.exe operator unseal *unseal key*
-
-vault.exe operator unseal *unseal key* 
-
+--------- Enable logging --------
 vault.exe login *root_token*
 
-vault.exe audit enable -path="vault_audit" file file_path="/Program Files/vault/vault_audit.log"
-
-vault.exe auth enable okta
-
-vault.exe write auth/okta/config base_url="okta.com" org_name="dev-******" api_token="******************"
-
-optional:
-vault.exe login -method=okta username=username@company.com password=*******
+vault.exe audit enable file file_path="/Users/vault/vault_audit.log"
